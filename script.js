@@ -15,3 +15,13 @@ function fetchExpenses() {
         })
         .catch(error => console.error('Error fetching expenses:', error));
 }
+
+// Function to add an expense via API and update the view
+function addExpense() {
+    const description = document.getElementById('description').value;
+    const amount = document.getElementById('amount').value;
+
+    if (!description || !amount || isNaN(amount)) {
+        alert('Please enter a valid description and amount.');
+        return;
+    }
