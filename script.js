@@ -44,3 +44,16 @@ function addExpense() {
     document.getElementById('description').value = '';
     document.getElementById('amount').value = '';
 }
+
+// Function to add expense to the DOM
+function addExpenseToDOM(expense) {
+    const expenseList = document.getElementById('expenseList');
+
+    // Create a new list item (li) for each expense
+    const li = document.createElement('li');
+    li.innerHTML = `
+        ${expense.description} - $${expense.amount.toFixed(2)}
+        <button class="delete-btn" onclick="deleteExpense(${expense.id})">Delete</button>
+    `;
+    expenseList.appendChild(li);
+}
