@@ -56,3 +56,13 @@ def delete_expense(id):
         return jsonify({"message": "Expense deleted successfully!"}), 200
     except:
         return jsonify({"message": "Error deleting expense"}), 500
+
+# Serve the frontend
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
