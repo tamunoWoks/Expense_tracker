@@ -54,3 +54,17 @@ li {
     justify-content: space-between;
     align-items: center;
 }
+
+/* Delete button for each expense */
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
