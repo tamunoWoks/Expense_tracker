@@ -38,3 +38,19 @@ button {
 button:hover {
     background-color: #218838;
 }
+
+/* Style for the list of expenses */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
