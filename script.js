@@ -25,3 +25,17 @@ function addExpense() {
         alert('Please enter a valid description and amount.');
         return;
     }
+
+    // Send POST request to add the new expense
+    fetch('/expenses', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ description, amount }),
+    })
+    .then(response => response.json())
+    .then(() => {
+        fetchExpenses(); // Refresh expenses
+    })
+    .catch(error => console.error('Error adding expense:', error));
