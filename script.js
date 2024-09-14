@@ -39,3 +39,8 @@ function addExpense() {
         fetchExpenses(); // Refresh expenses
     })
     .catch(error => console.error('Error adding expense:', error));
+
+    // Clear input fields after adding
+    document.getElementById('description').value = '';
+    document.getElementById('amount').value = '';
+}
