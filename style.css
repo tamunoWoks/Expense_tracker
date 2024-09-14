@@ -5,3 +5,13 @@ body {
     padding: 20px;
     background-color: #f4f4f4;
 }
+
+/* Style for the main heading */
+h1 {
+    color: #333;
+}
+
+/* Style for the form inputs */
+.form-container {
+    margin-bottom: 20px;
+}
