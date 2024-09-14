@@ -20,3 +20,11 @@ class Expense(db.Model):
 
     def __repr__(self):
         return f'<Expense {self.id}>'
+
+# API to get all expenses
+@app.route('/expenses', methods=['GET'])
+def get_expenses():
+    expenses = Expense.query.order_by(Expense.date.desc()).all()
+    total_expense = sum(expense.amount for expense in expenses)
+    expense_list = [{"id": expense.id, "description": expense.description, "amount": expense.amount, "date": expense.date} for expense in expenses]
+    return jsonify({"expenses": expense_list, "total_expense": total_expense})
