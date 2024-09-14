@@ -28,3 +28,20 @@ def get_expenses():
     total_expense = sum(expense.amount for expense in expenses)
     expense_list = [{"id": expense.id, "description": expense.description, "amount": expense.amount, "date": expense.date} for expense in expenses]
     return jsonify({"expenses": expense_list, "total_expense": total_expense})
+
+# API to add a new expense
+@app.route('/expenses', methods=['POST'])
+def add_expense():
+    data = request.get_json()
+    description = data.get('description', '')
+    amount = data.get('amount', 0)
+    
+    if description and amount:
+        try:
+            new_expense = Expense(description=description, amount=float(amount))
+            db.session.add(new_expense)
+            db.session.commit()
+            return jsonify({"message": "Expense added successfully!"}), 201
+        except:
+            return jsonify({"message": "Error adding expense"}), 500
+    return jsonify({"message": "Invalid input"}), 400
