@@ -45,3 +45,14 @@ def add_expense():
         except:
             return jsonify({"message": "Error adding expense"}), 500
     return jsonify({"message": "Invalid input"}), 400
+
+# API to delete an expense
+@app.route('/expenses/<int:id>', methods=['DELETE'])
+def delete_expense(id):
+    expense_to_delete = Expense.query.get_or_404(id)
+    try:
+        db.session.delete(expense_to_delete)
+        db.session.commit()
+        return jsonify({"message": "Expense deleted successfully!"}), 200
+    except:
+        return jsonify({"message": "Error deleting expense"}), 500
