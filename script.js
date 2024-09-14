@@ -69,3 +69,6 @@ function deleteExpense(id) {
     })
     .catch(error => console.error('Error deleting expense:', error));
 }
+
+// Fetch expenses when the page loads
+window.onload = fetchExpenses;
