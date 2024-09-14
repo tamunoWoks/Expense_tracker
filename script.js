@@ -57,3 +57,15 @@ function addExpenseToDOM(expense) {
     `;
     expenseList.appendChild(li);
 }
+
+// Function to delete an expense via API
+function deleteExpense(id) {
+    fetch(`/expenses/${id}`, {
+        method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(() => {
+        fetchExpenses(); // Refresh expenses after deletion
+    })
+    .catch(error => console.error('Error deleting expense:', error));
+}
